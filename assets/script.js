@@ -167,6 +167,7 @@ const mostraPopUp = (
   mensagem = "Mensagem de teste..."
 ) => {
   if (mostrar) {
+    $("html, body").animate({ scrollTop: $(".pop-up")[0].offsetTop }, "smooth");
     $(".pop-up").fadeIn(500);
     $(".pop-up h1").html(titulo);
     $(".pop-up div").html(mensagem);

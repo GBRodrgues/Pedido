@@ -240,19 +240,20 @@ img {
 
 .pop-up {
   display: none;
-  position: fixed;
+  position: absolute;
   background-color: #fff;
   z-index: 500;
   border-radius: 20px;
   box-shadow: 1px 2px 3px grey;
   padding: 30px 20px 20px 20px;
   margin: auto;
-  left: 33.2%;
-  right: 50%;
-  width: 100%;
+  right: 0;
+  left: 0;
+  width: 90%;
   max-width: 500px;
-  top: 50%;
+  top: 20%;
 }
+
 .pop-up h1,
 .pop-up button {
   text-align: center;

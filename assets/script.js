@@ -13,6 +13,34 @@ $(document).ready(function () {
     $("div.opcoes").slideToggle(500);
   });
 
+  function calcularTempoDesde(dataInicial) {
+    const agora = new Date();
+    const diferenca = agora - dataInicial;
+  
+    const segundosTotais = Math.floor(diferenca / 1000);
+    const minutos = Math.floor(segundosTotais / 60) % 60;
+    const horas = Math.floor(segundosTotais / 3600) % 24;
+    const dias = Math.floor(segundosTotais / 86400);
+  
+    const anos = agora.getFullYear() - dataInicial.getFullYear();
+    const meses =
+      agora.getMonth() - dataInicial.getMonth() + anos * 12 +
+      (agora.getDate() >= dataInicial.getDate() ? 0 : -1);
+  
+    return { dias, horas, minutos, segundos: segundosTotais % 60, anos, meses };
+  }
+  
+  function atualizarCronometro() {
+    const { dias, horas, minutos, segundos, anos, meses } =
+      calcularTempoDesde(new Date("2024-01-20T00:00:00"));
+  
+    $("#tempo").text(`${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`);
+    $("#tempo_anos").text(`${anos} Ano(s) e ${meses % 12} Mes(es)`);
+  }
+  
+  setInterval(atualizarCronometro, 1000);
+  atualizarCronometro();
+  
   $(".calendario .marcado").click(function () {
     mostraMsgMes($(this).attr("value"));
   });
